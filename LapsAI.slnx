@@ -1,0 +1,11 @@
+<Solution>
+  <Project Path="DummyService/DummyService.csproj" />
+  <Project Path="LapsAI/LapsAI.Shared/LapsAI.Shared.csproj" />
+  <Project Path="LapsAI/LapsAI.Web/LapsAI.Web.csproj" />
+  <Project Path="LapsAI/LapsAI/LapsAI.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+  <Project Path="LapsAIAPIGateway/LapsAIAPIGateway.csproj" />
+  <Project Path="LapsAIDAO/LapsAIDAO.csproj" />
+  <Project Path="UserInfoService/UserInfoService.csproj" />
+</Solution>
