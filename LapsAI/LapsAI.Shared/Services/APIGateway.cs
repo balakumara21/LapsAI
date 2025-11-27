@@ -37,11 +37,11 @@ namespace LapsAI.Shared.Services
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> GetToken(string ApiKey)
+        public async Task<string> GetToken(UserInfo userInfo)
         {
             var endpoint = "api/Token";
-            _httpClient.DefaultRequestHeaders.Add("X-API-KEY", ApiKey);
-            var response = await _httpClient.PostAsync(endpoint, null);
+            _httpClient.DefaultRequestHeaders.Add("X-API-KEY", "Bala");
+            var response = await _httpClient.PostAsJsonAsync(endpoint, userInfo);
 
             TokenResponse tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(await response.Content.ReadAsStringAsync());
 

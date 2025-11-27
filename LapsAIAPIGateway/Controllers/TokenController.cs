@@ -7,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using LapsAIApiGateWay.Services;
+using LapsAIDAO.Models;
 
 namespace LapsAIApiGateWay.Controllers
 {
@@ -27,12 +28,12 @@ namespace LapsAIApiGateWay.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost("/token")]
-        public IActionResult GenerateToken([FromBody] LoginModel login)
+        [HttpPost("api/token")]
+        public IActionResult GenerateToken([FromBody] UserInfo userinfo)
         {
             // For demonstration, use hardcoded credentials.
             // In a real application, you would validate against a database.
-            if (login.Username == "test" && login.Password == "password")
+            //if (userinfo.Username == "test" && userinfo.Password == "password")
             {
                 var jwtSettings = _configuration.GetSection("Jwt").Get<JwtSettings>();
                 if (jwtSettings == null || string.IsNullOrEmpty(jwtSettings.Key) || string.IsNullOrEmpty(jwtSettings.Issuer) || string.IsNullOrEmpty(jwtSettings.Audience))
@@ -46,9 +47,9 @@ namespace LapsAIApiGateWay.Controllers
                 // Create claims for the token
                 var claims = new List<Claim>
                 {
-                    new Claim(JwtRegisteredClaimNames.Sub, login.Username),
+                    new Claim(JwtRegisteredClaimNames.Sub, userinfo.Username),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                    new Claim(ClaimTypes.NameIdentifier, login.Username)
+                    new Claim(ClaimTypes.NameIdentifier, userinfo.Username)
                 };
 
                 var token = new JwtSecurityToken(
