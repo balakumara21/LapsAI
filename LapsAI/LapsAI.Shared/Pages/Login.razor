@@ -68,15 +68,15 @@
 
     private async Task LoginEntry()
     {
-
-         var result = await _APIGateway.postloginData(new LapsAIDAO.Models.UserInfo { Username = Username, Password = Password });
+        var userinfo = new LapsAIDAO.Models.UserInfo { Username = Username, Password = Password };
+        var result = await _APIGateway.postloginData(userinfo);
          if (result)
          {
-             //var Token = await _APIGateway.GetToken("Bala");
+            var Token = await _APIGateway.GetToken(userinfo);
 
-             //await storageService.Set("Token", Token);
+             await storageService.Set("Token", Token);
 
-            //TokenStore.Token = Token;
+            TokenStore.Token = Token;
 
             navigationManager.NavigateTo("/Home");
 

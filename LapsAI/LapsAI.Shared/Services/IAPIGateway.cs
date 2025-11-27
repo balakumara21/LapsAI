@@ -9,7 +9,7 @@ namespace LapsAI.Shared.Services
     {
         Task<bool> postloginData(UserInfo userInfo);
 
-        Task<string> GetToken(string ApiKey);
+        Task<string> GetToken(UserInfo userInfo);
 
         Task<string> GetAServiceValue();
 
