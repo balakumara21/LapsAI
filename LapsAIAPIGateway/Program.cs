@@ -7,13 +7,21 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using SqlKata.Compilers;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //builder.Services.AddTransient<IRepository, Repository>();
+
+builder.Services.AddSingleton<IMongoClient>(sp =>
+{
+    var conn = builder.Configuration.GetConnectionString("MongoServer");
+    return new MongoClient(conn);
+});
 
 builder.Services.AddTransient<ILoginService, LoginService>();
 
@@ -22,6 +30,34 @@ builder.Services.AddSingleton<IDatabaseFactory>(sp =>
         builder.Configuration["Database:Type"],
         sp
     ));
+
+
+builder.Services.AddScoped<IRepository>(sp =>
+{
+    var dbType = builder.Configuration["Database:Type"];
+    var factory = sp.GetRequiredService<IDatabaseFactory>();
+
+    return dbType switch
+    {
+        "SqlServer" => new SqlUserRepository(
+            builder.Configuration.GetConnectionString("SqlServer"),
+            new SqlServerCompiler()
+        ),
+
+        "Postgres" => new PostgreUserRepository(
+            builder.Configuration.GetConnectionString("Postgres"),
+            new PostgresCompiler()
+        ),
+
+        "MongoServer" => new MongoUserRepository(
+            sp.GetRequiredService<ILogger<MongoUserRepository>>(),
+            sp.GetRequiredService<IMongoClient>(),
+            builder.Configuration
+        ),
+
+        _ => throw new Exception("Unknown repository type")
+    };
+});
 
 // Load Ocelot configuration
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
