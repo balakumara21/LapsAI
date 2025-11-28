@@ -30,7 +30,7 @@ namespace LapsAI.Shared.Services
         public async Task<string> GetAServiceValue()
         {
             //var Token = await _storageService.Get("Token");
-            var endpoint = "api/APIGateway";
+            var endpoint = "api/APIGateway/servicea";
             //_httpClient.DefaultRequestHeaders.Authorization=new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer" ,Token);
             var response = await _httpClient.GetAsync(endpoint);
 

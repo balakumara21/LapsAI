@@ -1,8 +1,11 @@
 using CorrelationId.DependencyInjection;
 using CorrelationId.HttpClient;
+using LapsAI.Shared;
 using LapsAI.Shared.Services;
 using LapsAI.Web.Components;
 using LapsAI.Web.Services;
+using System.Net.Http;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -13,7 +16,9 @@ builder.Services.AddRazorComponents()
 
 // Add device-specific services used by the LapsAI.Shared project
 builder.Services.AddSingleton<IFormFactor, FormFactor>();
+
 builder.Services.AddCorrelationId();
+
 
 builder.Services.AddScoped<StorageService>();
 

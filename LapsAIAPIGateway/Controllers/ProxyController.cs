@@ -6,7 +6,7 @@ namespace LapsAIApiGateWay.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("call")]
+    [Route("api/APIGateway")]
     public class ProxyController : ControllerBase
     {
         private readonly Services.IServiceAClient _serviceA;
@@ -23,6 +23,7 @@ namespace LapsAIApiGateWay.Controllers
         {
             var json = await _serviceA.GetWeatherAsync();
             return Content(json, "application/json");
+
         }
 
         [HttpGet("serviceb")]
