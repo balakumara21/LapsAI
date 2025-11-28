@@ -1,7 +1,9 @@
-﻿
+﻿using LapsAI.Shared;
 using LapsAI.Services;
 using LapsAI.Shared.Services;
 using Microsoft.Extensions.Logging;
+using CorrelationId.DependencyInjection;
+using CorrelationId.HttpClient;
 
 namespace LapsAI
 {
@@ -20,14 +22,22 @@ namespace LapsAI
             // Add device-specific services used by the LapsAI.Shared project
             builder.Services.AddSingleton<IFormFactor, FormFactor>();
 
-            //builder.Services.AddCorrelationId();
+            builder.Services.AddCorrelationId();
 
             builder.Services.AddScoped<StorageService>();
 
             builder.Services.AddTransient<TokenHandler>();
 
 
-            
+
+            builder.Services.AddHttpClient<IAPIGateway, APIGateway>(httpclient =>
+            {
+
+                httpclient.BaseAddress = new Uri(AppSettings.APIGatewayBaseUrl);
+
+
+            }).AddCorrelationIdForwarding().AddHttpMessageHandler<TokenHandler>();
+
 
             builder.Services.AddMauiBlazorWebView();
 
