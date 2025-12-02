@@ -4,6 +4,7 @@ using LapsAI.Shared;
 using LapsAI.Shared.Services;
 using LapsAI.Web.Components;
 using LapsAI.Web.Services;
+using Syncfusion.Blazor;
 using System.Net.Http;
 
 
@@ -13,6 +14,10 @@ var configuration = builder.Configuration;
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JFaF1cXGFCf1FpR2RGfV5ycUVHal9QTnRfUiweQnxTdEBiWHxecXVUT2FeWEZ0WkleYg==");
+
+builder.Services.AddSyncfusionBlazor();
 
 // Add device-specific services used by the LapsAI.Shared project
 builder.Services.AddSingleton<IFormFactor, FormFactor>();

@@ -1,0 +1,99 @@
+﻿@page "/startLapsAI"
+@using LapsAI.Shared.Services
+@inject NavigationManager navigationManager
+
+@using Syncfusion.Blazor.Cards
+@using Syncfusion.Blazor.Buttons
+
+<style>
+    /* Custom CSS to match the mobile design */
+    .page-background {
+        background-color: #F9FAFB;
+    }
+
+    .container {
+        padding: 30px;
+        margin-top: 10px;
+    }
+
+    .ai-brain-icon {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-color: #EEF2FF; /* Light blue background */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px auto;
+        font-size: 40px;
+    }
+
+    .list-icon-frame {
+        height: 30px;
+        width: 30px;
+        border-radius: 6px;
+        background-color: #EBF5FE; /* Lighter blue */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: #3B82F6;
+    }
+</style>
+
+<div class="page-background" style="min-height: 100vh;">
+
+    <div class="container">
+
+        <div style="text-align: center; margin-bottom: 25px;">
+            <h1 style="font-size: 28px; font-weight: bold; color: #1F2937;">LAPS AI</h1>
+            <p style="font-size: 14px; color: #6B7280;">Automate your workflow with intelligent selection.</p>
+        </div>
+
+        <SfCard Class="shadow-card" CssClass="e-card-bordered" style="padding: 25px; border-radius: 12px; margin-bottom: 25px;">
+            <div class="e-card-content">
+
+                <div class="ai-brain-icon">
+                    <span>🧠</span>
+                </div>
+
+                <SfButton Content="Start LAPS AI"
+                          @onclick="StartLaps"
+                          CssClass="e-primary"
+                          style="height: 50px; width: 100%; border-radius: 8px; font-size: 18px;"></SfButton>
+
+            </div>
+        </SfCard>
+
+        <SfCard CssClass="e-card-bordered" style="padding: 0 15px; border-radius: 8px; margin-bottom: 15px;">
+            <div class="e-card-content" style="display: flex; align-items: center; height: 70px;">
+                <div class="list-icon-frame" style="margin-right: 15px;">
+                    <span>?</span>
+                </div>
+                <span style="flex-grow: 1; font-size: 16px; color: #1F2937;">How it Works</span>
+                <span style="font-size: 14px; color: #9CA3AF;">&gt;</span>
+            </div>
+        </SfCard>
+
+        <SfCard CssClass="e-card-bordered" style="padding: 0 15px; border-radius: 8px;">
+            <div class="e-card-content" style="display: flex; align-items: center; height: 70px;">
+                <div class="list-icon-frame" style="margin-right: 15px;">
+                    <span>⏱️</span>
+                </div>
+                <span style="flex-grow: 1; font-size: 16px; color: #1F2937;">Selection History</span>
+                <span style="font-size: 14px; color: #9CA3AF;">&gt;</span>
+            </div>
+        </SfCard>
+
+    </div>
+
+</div>
+
+@code {
+   
+    private void StartLaps()
+    {
+        
+        navigationManager.NavigateTo("/WorkflowGeneration");
+    }
+}
