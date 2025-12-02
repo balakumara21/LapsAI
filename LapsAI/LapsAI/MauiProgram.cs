@@ -1,9 +1,11 @@
-﻿using LapsAI.Shared;
+﻿using CorrelationId.DependencyInjection;
+using CorrelationId.HttpClient;
 using LapsAI.Services;
+using LapsAI.Shared;
 using LapsAI.Shared.Services;
 using Microsoft.Extensions.Logging;
-using CorrelationId.DependencyInjection;
-using CorrelationId.HttpClient;
+using Syncfusion.Blazor;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace LapsAI
 {
@@ -14,6 +16,7 @@ namespace LapsAI
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                 .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -45,7 +48,7 @@ namespace LapsAI
             builder.Services.AddBlazorWebViewDeveloperTools();
             builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddSyncfusionBlazor();
             return builder.Build();
         }
     }
