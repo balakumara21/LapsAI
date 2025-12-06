@@ -5,7 +5,6 @@ using Syncfusion.Blazor.Diagram;
 using Syncfusion.Blazor.Diagram.SymbolPalette;
 using Syncfusion.Blazor.Inputs;
 using Syncfusion.Blazor.Spinner;
-
 namespace TextToFlowchartDiagram
 {
     public partial class TextToFlowchart

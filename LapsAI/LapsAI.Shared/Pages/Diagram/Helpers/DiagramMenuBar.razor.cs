@@ -4,9 +4,9 @@ using Syncfusion.Blazor.Diagram;
 using System.Collections.ObjectModel;
 using Syncfusion.Blazor.SplitButtons;
 using Microsoft.JSInterop;
-using Syncfusion.Pdf.Graphics;
-using Syncfusion.Pdf;
 using LapsAI.Shared.Models;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Graphics;
 
 namespace TextToMindMapDiagram
 {
@@ -521,7 +521,7 @@ namespace TextToMindMapDiagram
             var diagram = Parent.Diagram;
             DiagramExportFormat exportFormat = DiagramExportFormat.JPEG;
             var images = await diagram.ExportAsync(exportFormat, exportOptions);
-            var Orientation = PdfPageOrientation.Landscape;
+            var Orientation =PdfPageOrientation.Landscape;
             if (exportType.ToString() == "PDF")
             {
                 await ExportToPdf(fileName, Orientation, true, images);

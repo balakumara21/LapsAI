@@ -1,6 +1,8 @@
 ﻿@using Syncfusion.Blazor.Popups
 @using Syncfusion.Blazor.Buttons
 @using Syncfusion.Blazor.Inputs
+@using SyncfusionAISamples.Service
+@inject AzureAIService ChatGptService
 @namespace TextToMindMapDiagram
 <SfFab IconCss="e-icons e-ai-chat" Content="AI Assist" OnClick="OnFabClicked"></SfFab>
 <SfDialog Width="570px" IsModal="true" ShowCloseIcon="true" CssClass="custom-dialog" Visible="@ShowAIAssistDialog">
