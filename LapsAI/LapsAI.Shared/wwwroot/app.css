@@ -1,3 +1,5 @@
+@import "styles/diagram/textToFlowchart.css";
+@import "styles/diagram/textToMindmap.css";
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }

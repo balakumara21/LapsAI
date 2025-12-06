@@ -7,15 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot1\app.css" />
+    <Content Include="wwwroot1\favicon.png" />
+    <Content Include="wwwroot1\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="wwwroot1\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+  </ItemGroup>
+
+  <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="Syncfusion.Blazor" Version="31.2.16" />
-    <PackageReference Include="Syncfusion.Maui.Core" Version="31.2.16" />
+    <PackageReference Include="OpenAI" Version="2.3.0" />
+    <PackageReference Include="SmartComponents.LocalEmbeddings" Version="0.1.0-preview10148" />
+    <PackageReference Include="Syncfusion.Blazor.AI" Version="31.2.16" />
+    <PackageReference Include="Syncfusion.Blazor.Cards" Version="31.2.16" />
+    <PackageReference Include="Syncfusion.Blazor.Diagram" Version="31.2.16" />
+    <PackageReference Include="Syncfusion.Blazor.FileManager" Version="31.2.16" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="31.2.16" />
     <PackageReference Include="Syncfusion.Maui.Toolkit" Version="1.0.8" />
+    <PackageReference Include="Syncfusion.Pdf.Net.Core" Version="31.2.16" />
+    <PackageReference Include="System.IO" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>

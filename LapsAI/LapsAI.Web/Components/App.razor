@@ -4,6 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Syncfusion Theme (choose one: bootstrap5, tailwind, material, fluent) -->
+  @*   <link href="_content/Syncfusion.Blazor.Themes/tailwind.css" rel="stylesheet" />
+
+    <!-- Syncfusion Blazor icons (real path) -->
+    <link href="_content/Syncfusion.Blazor/styles/syncfusion-blazor-icons.css" rel="stylesheet" />
+    <link href="_content/Syncfusion.Blazor/styles/tailwind.css" rel="stylesheet" /> *@
+    <link rel="stylesheet" href="@Assets["bootstrap/bootstrap.min.css"]" />
+    <link rel="stylesheet" href="@Assets["app.css"]" />
+    <link rel="stylesheet" href="@Assets["SyncfusionAISamples.styles.css"]" />
     <base href="/" />
     <ResourcePreloader />
     <link rel="stylesheet" href="_content/LapsAI.Shared/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -12,12 +21,22 @@
     <ImportMap />
     <link rel="icon" type="image/png" href="_content/LapsAI.Shared/favicon.png" />
     <HeadOutlet @rendermode="InteractiveServer" />
+    <link id="theme" href="_content/Syncfusion.Blazor.Themes/tailwind.css" rel="stylesheet" />
+    <link href="syncfusion-blazor-icons.css" rel="stylesheet" />
+    <link href="db-icons/style.css" rel="stylesheet" />
 </head>
 
 <body>
     <Routes @rendermode="InteractiveServer" />
     <ReconnectModal />
     <script src="@Assets["_framework/blazor.web.js"]"></script>
+     <!-- Syncfusion Blazor control's main script -->
+    <script src="_content/Syncfusion.Blazor.Core/scripts/syncfusion-blazor.min.js" type="text/javascript"></script>
+    <!-- Syncfusion Blazor PDF Viewer (Next Gen) control's script -->
+    <script src="_content/Syncfusion.Blazor.SfPdfViewer/scripts/syncfusion-blazor-sfpdfviewer.min.js" type="text/javascript"></script>
+
+    <!-- Syncfusion Blazor Document Editor control's script -->
+    <script src="_content/Syncfusion.Blazor.WordProcessor/scripts/syncfusion-blazor-documenteditor.min.js" type="text/javascript"></script>
 </body>
 
 </html>
