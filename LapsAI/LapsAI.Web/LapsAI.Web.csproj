@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <PackageReference Include="CorrelationId" Version="3.0.1" />
-    <PackageReference Include="Syncfusion.Blazor" Version="31.2.16" />
     <PackageReference Include="Syncfusion.Maui.Core" Version="31.2.16" />
     <PackageReference Include="Syncfusion.Maui.Toolkit" Version="1.0.8" />
   </ItemGroup>
